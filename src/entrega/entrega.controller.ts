@@ -33,7 +33,11 @@ export class EntregaController {
 	}
 
 	@Post('concluir/:id')
-	@ApiOperation({ summary: 'Retorna a lista de entregas da Api de Entregas' })
+	@ApiOperation({
+		summary: 'Realiza a conclusão da entrega no sistema de Entregas',
+		description:
+			'Realiza a conclusão da entrega no sistema de Entregas com base no ID externo da entrega, posteriormente atualiza o status da entrega no sistema de entregadores também',
+	})
 	concluir(@Param('id') entregaId: string) {
 		return this.entregaService.concluir(entregaId);
 	}
