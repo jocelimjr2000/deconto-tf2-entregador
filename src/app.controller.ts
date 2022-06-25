@@ -28,10 +28,13 @@ export class AppController {
 	async execute(@Payload() data: any, @Ctx() context: RmqContext) {
 		const entregador = await this.entregadorService.obter(data.id);
 
-		console.log(entregador);
-
-		console.log('>>>>>>', data);
-
-		return entregador;
+    if(entregador){
+      return {
+        "id": entregador.id, 
+        "nome" : entregador.nome,
+      };
+    }
+		
+		return null;
 	}
 }
