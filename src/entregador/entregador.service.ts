@@ -3,8 +3,6 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Entregador, EntregadorDocument } from './entregador.model';
 import { Model } from 'mongoose';
 import { CadastrarEntregadorDTO } from './dto/cadastrar-entregador.dto';
-import { AlterarEntregadorDTO } from './dto/alterar-entregador.dto';
-import { Entrega } from '../entrega/entrega.model';
 
 @Injectable()
 export class EntregadorService {

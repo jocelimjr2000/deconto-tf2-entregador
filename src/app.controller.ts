@@ -28,13 +28,13 @@ export class AppController {
 	async execute(@Payload() data: any, @Ctx() context: RmqContext) {
 		const entregador = await this.entregadorService.obter(data.id);
 
-    if(entregador){
-      return {
-        "id": entregador.id, 
-        "nome" : entregador.nome,
-      };
-    }
-		
+		if (entregador) {
+			return {
+				id: entregador.id,
+				nome: entregador.nome,
+			};
+		}
+
 		return null;
 	}
 }

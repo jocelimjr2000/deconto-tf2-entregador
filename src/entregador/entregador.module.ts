@@ -3,7 +3,6 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { EntregadorController } from './entregador.controller';
 import { Entregador, EntregadorSchema } from './entregador.model';
 import { EntregadorService } from './entregador.service';
-import { EntregaModule } from '../entrega/entrega.module';
 
 @Module({
 	imports: [

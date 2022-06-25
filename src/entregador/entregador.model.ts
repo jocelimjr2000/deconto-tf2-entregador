@@ -1,6 +1,4 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import mongoose from 'mongoose';
-import { Entrega } from 'src/entrega/entrega.model';
 
 export type EntregadorDocument = Entregador & Document;
 
