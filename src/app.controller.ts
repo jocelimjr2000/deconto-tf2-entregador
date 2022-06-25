@@ -1,31 +1,37 @@
 import { Controller, Get } from '@nestjs/common';
-import { Ctx, MessagePattern, Payload, RmqContext } from '@nestjs/microservices';
+import {
+	Ctx,
+	MessagePattern,
+	Payload,
+	RmqContext,
+} from '@nestjs/microservices';
 import { AppService } from './app.service';
+import { EntregadorService } from './entregador/entregador.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+	constructor(
+		private readonly appService: AppService,
+		private readonly entregadorService: EntregadorService,
+	) {}
 
-  /**
-   *   { 
-   *      "id": "teste", 
-   *      "pattern": "my-pattern", 
-   *       "data": { 
-   *           "fieldOne": 1
-   *       } 
-   *   }
-   */
-  @MessagePattern('find-entregador')
-  execute(
-    @Payload() data: any,
-    @Ctx() context: RmqContext
-  ) {
-    const entregador = {"message": "vindo do nestjs"};
+	/**
+	 *   {
+	 *      "id": "teste",
+	 *      "pattern": "my-pattern",
+	 *       "data": {
+	 *           "fieldOne": 1
+	 *       }
+	 *   }
+	 */
+	@MessagePattern('find-entregador')
+	async execute(@Payload() data: any, @Ctx() context: RmqContext) {
+		const entregador = await this.entregadorService.obter(data.id);
 
-    const id = data.id;
-  
-    console.log('>>>>>>', data);
+		console.log(entregador);
 
-    return entregador;
-  }
+		console.log('>>>>>>', data);
+
+		return entregador;
+	}
 }

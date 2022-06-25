@@ -13,5 +13,6 @@ import { EntregaModule } from '../entrega/entrega.module';
 	],
 	controllers: [EntregadorController],
 	providers: [EntregadorService],
+	exports: [EntregadorService],
 })
 export class EntregadorModule {}
