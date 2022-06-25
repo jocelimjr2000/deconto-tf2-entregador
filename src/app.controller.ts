@@ -15,7 +15,7 @@ export class AppController {
    *       } 
    *   }
    */
-  @MessagePattern('execute')
+  @MessagePattern('find-entregador')
   execute(
     @Payload() data: any,
     @Ctx() context: RmqContext
